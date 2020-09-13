@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1070</width>
+    <height>632</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="settings">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Окно просмотра CSV:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="resultLabel">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;CSV файл не подходит для импорта!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Параметры видео:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" rowspan="6" colspan="2">
+        <widget class="QTableWidget" name="tableWidget"/>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="toInt">
+         <property name="text">
+          <string>Преобразовывать числа в целые</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Отображать первых строк:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2" colspan="2">
+        <widget class="QLineEdit" name="rowsSize">
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Разрешение видео</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Уровень интерполяции значений</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="loadCSVModel">
+           <property name="text">
+            <string>Загрузить модель из CSV</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Разделитель</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="separator">
+           <property name="text">
+            <string>,</string>
+           </property>
+           <property name="maxLength">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="7" column="2" colspan="2">
+        <widget class="QLineEdit" name="interpolation">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Вывод ffmpeg после рендеринга:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Наложить аудио:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" rowspan="8" colspan="2">
+        <widget class="QTextEdit" name="ffmpegoutput"/>
+       </item>
+       <item row="9" column="2">
+        <widget class="QLineEdit" name="audioPath">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3">
+        <widget class="QPushButton" name="selectAudio">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2" colspan="2">
+        <widget class="QCheckBox" name="mt">
+         <property name="text">
+          <string>Многопоточный рендеринг</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="2" colspan="2">
+        <widget class="QCheckBox" name="deleteAfterRend">
+         <property name="text">
+          <string>Удалять кадры после рендеринга</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="2">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Выходная папка:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="2">
+        <widget class="QLineEdit" name="outputPath">
+         <property name="text">
+          <string>/home/alab/frames</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="3">
+        <widget class="QPushButton" name="selectFolder">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Имя файла:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="2" colspan="2">
+        <widget class="QLineEdit" name="outputName">
+         <property name="text">
+          <string>video</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="2" colspan="2">
+        <widget class="QPushButton" name="render">
+         <property name="text">
+          <string>Приступить к рендерингу кадров и созданию видео</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
+        <widget class="QComboBox" name="resolution">
+         <item>
+          <property name="text">
+           <string>360p</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>720p</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1080p</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2K</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4K</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="preview">
+      <attribute name="title">
+       <string>Tab 2</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <widget class="QGraphicsView" name="graphicsView"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Предпросмотр сетки(в разрешение окна):</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
