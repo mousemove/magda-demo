@@ -2,8 +2,8 @@
 Программа для создания видео со статистикой . Демо репозиторий
  Примеры созданных роликов с помощью Magda(кликните для просмотра):
  
- [![Watch the video](https://img.youtube.com/vi/D4MfHUTKDxI/maxresdefault.jpg)](https://youtu.be/D4MfHUTKDxI)
-  [![Watch the video](https://img.youtube.com/vi/Onb7id5-Mag/maxresdefault.jpg)](https://youtu.be/Onb7id5-Mag )
+ [![Watch the video](https://img.youtube.com/vi/D4MfHUTKDxI/hqdefault.jpg)](https://youtu.be/D4MfHUTKDxI)
+  [![Watch the video](https://img.youtube.com/vi/Onb7id5-Mag/hqdefault.jpg)](https://youtu.be/Onb7id5-Mag )
 
 
 
