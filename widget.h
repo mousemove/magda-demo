@@ -33,6 +33,7 @@ private slots:
     void on_selectAudio_clicked();
 
     void on_tabWidget_currentChanged(int index);
+    void deletePNGinFolder(QString path);
 
 private:
     Ui::Widget *ui;

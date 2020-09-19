@@ -5,7 +5,7 @@ Painter::Painter(QObject *parent) : QObject(parent)
 
 }
 
-void Painter::paintFrame(ColumnPart &data, unsigned rowsDisplay, QString path, QGraphicsScene *scene, float maxValue, bool toReal)
+void Painter::paintFrame(ColumnPart &data, unsigned rowsDisplay, QString path, QGraphicsScene *scene, float maxValue, bool toReal,bool save)
 {
 
     //Сортировка и поиск максимального значения во всех фреймах для градуировки шкалы
@@ -112,10 +112,13 @@ void Painter::paintFrame(ColumnPart &data, unsigned rowsDisplay, QString path, Q
     texts.push_back(text);
     text->setPos(leftSpacing/4,upSpacing/4);
 
-    QImage image(scene->width(), scene->height(), QImage::Format_ARGB32_Premultiplied);
-    QPainter painter(&image);
-    scene->render(&painter);
-    image.save(path);
+    if (save)
+    {
+        QImage image(scene->width(), scene->height(), QImage::Format_ARGB32_Premultiplied);
+        QPainter painter(&image);
+        scene->render(&painter);
+        image.save(path);
+    }
 }
 
 void Painter::paintFrames(QVector<ColumnPart> &data, unsigned rowsDisplay,QString path, QGraphicsScene *scene,bool toReal )
@@ -144,7 +147,7 @@ void Painter::paintFrames(QVector<ColumnPart> &data, unsigned rowsDisplay,QStrin
 void Painter::paintFramesMT(QVector<ColumnPart> &data, unsigned rowsDisplay, QString path, QGraphicsScene *scene, bool toReal)
 {
 
-    unsigned int i =0;
+
     float maxValue = 0;
     //поиск максимального значения
     for(auto  c: data)

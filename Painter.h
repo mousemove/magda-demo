@@ -13,7 +13,7 @@ class Painter : public QObject
     Q_OBJECT
 public:
     explicit Painter(QObject *parent = nullptr);
-    static void paintFrame(ColumnPart &data, unsigned rowsDisplay, QString path,QGraphicsScene * scene,float maxValue,bool toInt = false);
+    static void paintFrame(ColumnPart &data, unsigned rowsDisplay, QString path,QGraphicsScene * scene,float maxValue,bool toInt = false,bool save = true);
     static void paintFrames(QVector<ColumnPart> &data, unsigned rowsDisplay, QString path,QGraphicsScene * scene,bool toReal = false);
     static void paintFramesMT(QVector<ColumnPart> &data, unsigned rowsDisplay, QString path, QGraphicsScene * scene, bool toReal = false);
 signals:

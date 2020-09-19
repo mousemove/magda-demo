@@ -79,6 +79,8 @@ void Widget::on_render_clicked()
 
     QFile::remove(ui->outputPath->text()+"/"+ui->outputName->text()+".webm");//удаление предыдущего файла если есть
     QFile::remove(ui->outputPath->text()+"/"+ui->outputName->text()+"_audio.webm");//c аудиодорожкой тоже самое если есть
+    deletePNGinFolder(ui->outputPath->text());//очистка картинок в директории перед стартом
+    ui->ffmpegoutput->clear();
     ui->resultLabel->setText("Интерполяция значений....");
     ui->resultLabel->repaint();
     QVector<ColumnPart> interpolData;
@@ -90,11 +92,10 @@ void Widget::on_render_clicked()
 
     ui->resultLabel->setText("Рендеринг кадров....");
     ui->resultLabel->repaint();
-    QThread::sleep(10);
     if(ui->mt->isChecked())
-        Painter::paintFramesMT((ui->interpolation->text().toUInt() != 0) ? interpolData : data,ui->rowsSize->text().toUInt(),"/home/alab/frames/",scene,ui->toInt->isChecked());
+        Painter::paintFramesMT((ui->interpolation->text().toUInt() != 0) ? interpolData : data,ui->rowsSize->text().toUInt(),ui->outputPath->text()+"/",scene,ui->toInt->isChecked());
     else
-        Painter::paintFrames((ui->interpolation->text().toUInt() != 0) ? interpolData : data,ui->rowsSize->text().toUInt(),"/home/alab/frames/",scene,ui->toInt->isChecked());
+        Painter::paintFrames((ui->interpolation->text().toUInt() != 0) ? interpolData : data,ui->rowsSize->text().toUInt(),ui->outputPath->text()+"/",scene,ui->toInt->isChecked());
     //Painter::paintFrames(data,55,"/home/alab/frames/",scene,ui->toInt->isChecked());
     ui->resultLabel->setText("Склейка....");
     ui->resultLabel->repaint();
@@ -108,15 +109,8 @@ void Widget::on_render_clicked()
 
     if(ui->deleteAfterRend->isChecked())
     {
+        deletePNGinFolder(ui->outputPath->text());
 
-        QDir dir(ui->outputPath->text());
-        dir.setFilter(QDir::Files);
-        QFileInfoList list = dir.entryInfoList();
-        for(auto f:list)
-        {
-            if (f.filePath().contains(".png")) QFile::remove(f.filePath());
-
-        }
     }
     if(ui->audioPath->text() != "")
     {
@@ -128,6 +122,7 @@ void Widget::on_render_clicked()
         ui->ffmpegoutput->setText(ui->ffmpegoutput->toPlainText()+process.readAllStandardError());
 
     }
+    interpolData.clear();
     ui->resultLabel->setText("Готово. Смотрите ответ ffmpeg.");
 
 }
@@ -170,7 +165,20 @@ void Widget::on_tabWidget_currentChanged(int index)
     {
         s->setSceneRect(0,0,ui->graphicsView->width(),ui->graphicsView->height());
         ui->graphicsView->setScene(s);
-        Painter::paintFrame(data[0],ui->rowsSize->text().toUInt(),"/home/alab/frames/",s,maxValue,ui->toInt->isChecked());
+        Painter::paintFrame(data[0],ui->rowsSize->text().toUInt(),"",s,maxValue,ui->toInt->isChecked(),false);
+
+    }
+}
+
+void Widget::deletePNGinFolder(QString path)
+{
+    QDir dir(path);
+
+    dir.setFilter(QDir::Files);
+    QFileInfoList list = dir.entryInfoList();
+    for(auto f:list)
+    {
+        if (f.filePath().contains(".png")) QFile::remove(f.filePath());
 
     }
 }
